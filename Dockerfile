@@ -16,7 +16,7 @@ COPY . .
 RUN npm run build
 
 # Serve Stage
-FROM nginx:stable-alpine
+FROM nginx:stable-alpine-slim
 
 # Copy the custom Nginx configuration file
 COPY nginx.conf /etc/nginx/conf.d/default.conf
