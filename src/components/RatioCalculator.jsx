@@ -262,7 +262,7 @@ export default function RatioCalculator() {
                   <span>3. Set Dilution Ratio</span>
                 </label>
                 <div className="text-xs font-bold text-brand-cyan bg-brand-cyan/10 border border-brand-cyan/20 px-2 py-0.5 rounded">
-                  1 part chemical to {ratioPart} parts water
+                  1 part chemical to {ratioPart || '?'} parts water
                 </div>
               </div>
 
@@ -290,8 +290,8 @@ export default function RatioCalculator() {
                     type="range"
                     min="1"
                     max="150"
-                    value={ratioPart}
-                    onChange={(e) => setRatioPart(parseInt(e.target.value))}
+                    value={ratioPart || 1}
+                    onChange={(e) => setRatioPart(parseInt(e.target.value, 10))}
                     className="w-full accent-brand-cyan cursor-pointer bg-slate-800 h-1 rounded-lg"
                   />
                   <div className="flex justify-between text-[10px] text-slate-500 font-bold mt-1 px-1">
@@ -306,9 +306,18 @@ export default function RatioCalculator() {
                     <span className="text-xs text-slate-500 mr-1.5 font-bold">1 :</span>
                     <input
                       type="number"
-                      min="1"
+                      min="0.1"
+                      step="any"
                       value={ratioPart}
-                      onChange={(e) => setRatioPart(Math.max(1, parseInt(e.target.value) || 1))}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        if (val === '') {
+                          setRatioPart('');
+                        } else {
+                          const parsed = parseFloat(val);
+                          setRatioPart(isNaN(parsed) ? '' : parsed);
+                        }
+                      }}
                       className="w-full bg-transparent text-white text-xs font-bold focus:outline-none"
                     />
                   </div>
