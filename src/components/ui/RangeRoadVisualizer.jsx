@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import { Zap, Flame, Flag, Sparkles } from 'lucide-react';
+import { useMemo } from 'react';
+import { Zap, Flame, Sparkles } from 'lucide-react';
 
 export default function RangeRoadVisualizer({ 
   gasRange = 0, 

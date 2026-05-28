@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Layout from './components/common/Layout';
 import Dashboard from './components/Dashboard';
 import RatioCalculator from './components/RatioCalculator';

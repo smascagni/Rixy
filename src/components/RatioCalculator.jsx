@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from 'react';
-import { Beaker, Sliders, Settings, Info, RefreshCw, AlertTriangle, CheckCircle, Sparkles } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import { Beaker, Sliders, Settings, Info, RefreshCw, AlertTriangle, CheckCircle } from 'lucide-react';
 import FlaskVisualizer from './ui/FlaskVisualizer';
 
 // Conversion factors relative to milliliters (mL)
@@ -59,10 +59,10 @@ export default function RatioCalculator() {
     const inputConversion = UNIT_CONVERSIONS[inputUnit];
     const inputInML = parsedVal * inputConversion.factor;
 
-    let chemInML = 0;
-    let waterInML = 0;
-    let totalInML = 0;
-    let formulaExplain = '';
+    let chemInML;
+    let waterInML;
+    let totalInML;
+    let formulaExplain;
 
     // 2. Perform dilution math based on parts (1 : ratioPart)
     // Formula: Concentrate + Diluent = Total. (e.g. 1:10 means 1 part chem, 10 parts water, 11 parts total)
@@ -123,7 +123,7 @@ export default function RatioCalculator() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto space-y-6">
+    <div className="w-full max-w-5xl mx-auto space-y-6">
       {/* Title block */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
@@ -162,7 +162,7 @@ export default function RatioCalculator() {
         
         {/* Left Column: Input Forms */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-6">
+          <div className="glass-card rounded-2xl p-5 md:p-6 border border-slate-800 space-y-6">
             
             {/* 1. Mode Selection Selector Segment */}
             <div className="space-y-2">

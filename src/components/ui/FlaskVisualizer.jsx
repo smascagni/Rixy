@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { Sparkles } from 'lucide-react';
 
 export default function FlaskVisualizer({ 

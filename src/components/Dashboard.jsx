@@ -1,4 +1,4 @@
-import { Beaker, ShieldAlert, Sparkles, ArrowRight, Compass, Flame, Info, Layers, Zap } from 'lucide-react';
+import { Beaker, ShieldAlert, Sparkles, ArrowRight, Compass, Info, Layers, Zap } from 'lucide-react';
 
 export default function Dashboard({ setActiveTab }) {
   const calculators = [
@@ -45,10 +45,10 @@ export default function Dashboard({ setActiveTab }) {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto space-y-10 py-2">
+    <div className="w-full max-w-6xl mx-auto space-y-8 md:space-y-10 py-2">
       {/* Welcome Banner */}
-      <div className="relative rounded-3xl p-6 md:p-10 overflow-hidden border border-slate-800 bg-gradient-to-br from-slate-900 to-brand-bg shadow-xl">
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-brand-cyan/5 blur-[80px] pointer-events-none"></div>
+      <div className="relative rounded-2xl md:rounded-3xl p-5 md:p-10 overflow-hidden border border-slate-800 bg-gradient-to-br from-slate-900 to-brand-bg shadow-xl">
+        <div className="absolute top-0 right-0 w-[200px] h-[200px] md:w-[400px] md:h-[400px] rounded-full bg-brand-cyan/5 blur-[80px] pointer-events-none"></div>
         <div className="relative z-10 space-y-4 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 text-brand-cyan text-xs font-semibold">
             <Sparkles className="w-3.5 h-3.5" />
@@ -69,14 +69,14 @@ export default function Dashboard({ setActiveTab }) {
           <Layers className="w-5 h-5 text-brand-cyan" />
           <span>Available Calculators</span>
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {calculators.map((calc) => {
             const Icon = calc.icon;
             return (
               <div
                 key={calc.id}
                 onClick={() => !calc.disabled && setActiveTab(calc.id)}
-                className={`group glass-card glass-card-hover rounded-2xl p-6 border flex flex-col justify-between ${
+                className={`group glass-card glass-card-hover rounded-2xl p-5 md:p-6 border flex flex-col justify-between ${
                   calc.disabled ? 'cursor-not-allowed border-slate-800' : 'cursor-pointer'
                 } ${calc.borderColor}`}
               >
@@ -122,7 +122,7 @@ export default function Dashboard({ setActiveTab }) {
       </div>
 
       {/* Quick Ratio Chart (Cheat Sheet) */}
-      <div className="glass-card rounded-2xl p-6 md:p-8 border border-slate-800">
+      <div className="glass-card rounded-2xl p-4 sm:p-6 md:p-8 border border-slate-800">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
           <div>
             <h3 className="text-lg font-bold text-white flex items-center gap-2">
@@ -139,23 +139,23 @@ export default function Dashboard({ setActiveTab }) {
           </div>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto w-full -mx-4 px-4 sm:mx-0 sm:px-0">
           <table className="w-full text-left text-xs border-collapse">
             <thead>
               <tr className="border-b border-slate-800 text-slate-400 font-semibold uppercase tracking-wider">
-                <th className="py-3 px-4">Ratio (Chem:Water)</th>
-                <th className="py-3 px-4">Percentage</th>
-                <th className="py-3 px-4">Concentrate per Gallon</th>
-                <th className="py-3 px-4">Primary Application</th>
+                <th className="py-3 px-2.5 sm:px-4 whitespace-nowrap">Ratio (Chem:Water)</th>
+                <th className="py-3 px-2.5 sm:px-4 whitespace-nowrap">Percentage</th>
+                <th className="py-3 px-2.5 sm:px-4 whitespace-nowrap">Concentrate per Gallon</th>
+                <th className="py-3 px-2.5 sm:px-4">Primary Application</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/50">
               {quickRatios.map((item, idx) => (
                 <tr key={idx} className="hover:bg-slate-800/20 transition-colors">
-                  <td className="py-3.5 px-4 font-bold text-brand-cyan">{item.ratio}</td>
-                  <td className="py-3.5 px-4 text-slate-300">{item.pct}</td>
-                  <td className="py-3.5 px-4 text-brand-emerald font-medium">{item.ozGal}</td>
-                  <td className="py-3.5 px-4 text-slate-400">{item.use}</td>
+                  <td className="py-3 px-2.5 sm:px-4 font-bold text-brand-cyan whitespace-nowrap">{item.ratio}</td>
+                  <td className="py-3 px-2.5 sm:px-4 text-slate-300 whitespace-nowrap">{item.pct}</td>
+                  <td className="py-3 px-2.5 sm:px-4 text-brand-emerald font-medium whitespace-nowrap">{item.ozGal}</td>
+                  <td className="py-3 px-2.5 sm:px-4 text-slate-400 min-w-[180px]">{item.use}</td>
                 </tr>
               ))}
             </tbody>

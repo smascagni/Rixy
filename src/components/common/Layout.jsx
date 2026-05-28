@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Beaker, Calculator, Menu, X, Home, Compass, ShieldAlert, Sparkles, Zap } from 'lucide-react';
+import { useState } from 'react';
+import { Beaker, Menu, X, Home, Compass, Sparkles, Zap } from 'lucide-react';
 
 export default function Layout({ children, activeTab, setActiveTab }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

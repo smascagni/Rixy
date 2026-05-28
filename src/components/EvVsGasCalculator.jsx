@@ -1,5 +1,5 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { Zap, Flame, DollarSign, Gauge, ShieldAlert, Sparkles, Navigation, Globe, ArrowRight, TrendingUp } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import { Zap, Flame, DollarSign, Sparkles, Navigation, Globe, TrendingUp } from 'lucide-react';
 import RangeRoadVisualizer from './ui/RangeRoadVisualizer';
 
 // Preset configurations for different vehicle classes
@@ -87,10 +87,10 @@ export default function EvVsGasCalculator() {
   
   // State for numerical inputs
   const [budget, setBudget] = useState(50);
-  const [gasPrice, setGasPrice] = useState(3.50);
-  const [gasEfficiency, setGasEfficiency] = useState(28);
-  const [elecPrice, setElecPrice] = useState(0.16);
-  const [elecEfficiency, setElecEfficiency] = useState(3.5);
+  const [gasPrice, setGasPrice] = useState(VEHICLE_PRESETS.imperial[0].gasPrice);
+  const [gasEfficiency, setGasEfficiency] = useState(VEHICLE_PRESETS.imperial[0].gasEff);
+  const [elecPrice, setElecPrice] = useState(VEHICLE_PRESETS.imperial[0].evPrice);
+  const [elecEfficiency, setElecEfficiency] = useState(VEHICLE_PRESETS.imperial[0].evEff);
   const [annualMileage, setAnnualMileage] = useState(12000);
 
   // Keep track of preset selection (for highlighting active preset if matching)
@@ -220,16 +220,8 @@ export default function EvVsGasCalculator() {
     };
   }, [unitSystem, budget, gasPrice, gasEfficiency, elecPrice, elecEfficiency, annualMileage]);
 
-  // Load standard default preset on mount or unit toggle reset
-  useEffect(() => {
-    const presets = VEHICLE_PRESETS[unitSystem];
-    if (presets && presets[0]) {
-      loadPreset(presets[0], 0);
-    }
-  }, [unitSystem]);
-
   return (
-    <div className="max-w-5xl mx-auto space-y-6">
+    <div className="w-full max-w-5xl mx-auto space-y-6">
       {/* Header Title Block */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
@@ -272,7 +264,7 @@ export default function EvVsGasCalculator() {
         
         {/* Left Column: Preset and Inputs */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="glass-card rounded-2xl p-6 border border-slate-800 space-y-6">
+          <div className="glass-card rounded-2xl p-5 md:p-6 border border-slate-800 space-y-6">
             
             {/* Presets Grid */}
             <div className="space-y-3">
