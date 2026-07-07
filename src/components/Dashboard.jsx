@@ -1,4 +1,4 @@
-import { Beaker, ShieldAlert, Sparkles, ArrowRight, Compass, Info, Layers, Zap } from 'lucide-react';
+import { Beaker, ShieldAlert, Sparkles, ArrowRight, Compass, Info, Layers, Zap, DollarSign } from 'lucide-react';
 
 export default function Dashboard({ setActiveTab }) {
   const calculators = [
@@ -24,14 +24,23 @@ export default function Dashboard({ setActiveTab }) {
     },
     {
       id: 'unit-converter',
-      title: 'Advanced Dilution Converter',
-      description: 'Convert between dilution ratios, percentages, parts per million (PPM), and standard fluid units in real-time.',
+      title: 'EV Efficiency Converter',
+      description: 'Convert between different electric vehicle efficiency units (mi/kWh, kWh/mi, km/kWh, kWh/100km) and simulate range.',
       icon: Compass,
-      badge: 'Coming Soon',
-      color: 'from-indigo-500 to-purple-500',
-      bgColor: 'bg-indigo-500/5',
-      borderColor: 'border-transparent opacity-60',
-      disabled: true
+      badge: 'Active',
+      color: 'from-brand-cyan to-indigo-500',
+      bgColor: 'bg-brand-cyan/5',
+      borderColor: 'group-hover:border-brand-cyan/50',
+    },
+    {
+      id: 'price-per-unit',
+      title: 'Price per Unit Calculator',
+      description: 'Compare the price per unit of up to three items side-by-side to find the absolute best value. Supports weight, volume, and count units.',
+      icon: DollarSign,
+      badge: 'Active',
+      color: 'from-brand-rose to-brand-amber',
+      bgColor: 'bg-brand-cyan/5',
+      borderColor: 'group-hover:border-brand-cyan/55',
     }
   ];
 

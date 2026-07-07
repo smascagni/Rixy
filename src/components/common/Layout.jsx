@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Beaker, Menu, X, Home, Compass, Sparkles, Zap } from 'lucide-react';
+import { Beaker, Menu, X, Home, Compass, Sparkles, Zap, DollarSign } from 'lucide-react';
 
 export default function Layout({ children, activeTab, setActiveTab }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -8,7 +8,8 @@ export default function Layout({ children, activeTab, setActiveTab }) {
     { id: 'dashboard', name: 'Dashboard', icon: Home, badge: null },
     { id: 'chemical-mixing', name: 'Chemical Mixing', icon: Beaker, badge: 'Active' },
     { id: 'ev-vs-gas', name: 'EV vs Gas Range', icon: Zap, badge: 'Active' },
-    { id: 'unit-converter', name: 'Unit Converter', icon: Compass, badge: 'Soon', disabled: true },
+    { id: 'unit-converter', name: 'EV Efficiency', icon: Compass, badge: 'Active' },
+    { id: 'price-per-unit', name: 'Price per Unit', icon: DollarSign, badge: 'Active' },
   ];
 
   return (
